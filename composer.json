@@ -1,0 +1,5 @@
+{
+    "require": {
+        "sergiors/functional": "dev-master"
+    }
+}
