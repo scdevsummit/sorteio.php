@@ -9,9 +9,12 @@ $contents = F\compose(F\partial('preg_split', '/\n/'), 'file_get_contents');
 $ls = (new F\Collection($contents('lista.csv')))
     ->map(function ($line) {
         return explode(',', $line);
-    })->filter(function ($line) {
+    })
+    ->filter(function ($line) {
         return array_key_exists(2, $line) && !!$line[2];
-    })->map(function ($line) {
+    })
+    ->map('array_values') // reset keys
+    ->map(function ($line) {
         return "{$line[1]} - {$line[2]} ${line[3]}";
     });
 
